@@ -1,0 +1,10 @@
+<div class="home">
+    <h2>Welcome to my home page</h2>
+
+    <p>Current time : {{ today | date:'fullDate'}}</p>
+    <p>style from global</p>
+
+    <ul class="list-group">Menu
+        <li *ngFor="let date of dates; let i = index" [class.active]="i === 0" class="list-group-item">{{ date | date:'MMMM yyyy' }}</li>
+    </ul>
+</div>
