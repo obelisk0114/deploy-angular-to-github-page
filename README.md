@@ -9,6 +9,13 @@ $ ng build --prod --base-href /deploy-angular-to-github-page/
 $ ngh --dir=dist/HW10-Project-Deployment --no-silent
 ```
 
+or
+
+    # Generate files to docs folder
+    $ ng build --prod --output-path docs --base-href /deploy-angular-to-github-page/
+    
+    $ npx angular-cli-ghpages --dir=docs --no-silent
+
 [The website address](https://obelisk0114.github.io/deploy-angular-to-github-page/)
 
 ## Reference website
@@ -16,6 +23,8 @@ $ ngh --dir=dist/HW10-Project-Deployment --no-silent
 [GitHub Pages](https://pages.github.com/)
 
 [Deploy to GitHub pages in Angular website](https://angular.io/guide/deployment#deploy-to-github-pages)
+
+[angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages/blob/master/docs/README_standalone.md)
 
 ## Development server
 
