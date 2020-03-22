@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
 
+## Deploy to GitHub Pages
+
+```Bash
+$ ng build --prod --base-href /deploy-angular-to-github-page/
+$ ngh --dir=dist/HW10-Project-Deployment --no-silent
+```
+
+[The website address](https://obelisk0114.github.io/deploy-angular-to-github-page/)
+
 ## Reference website
 
 [GitHub Pages](https://pages.github.com/)

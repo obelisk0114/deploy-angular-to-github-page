@@ -1,0 +1,25 @@
+<div class="form-group">
+    <label for="github-followers">GitHub followers</label>
+    <input #gitHubLogin type="text" name="github-followers" id="github-followers" 
+           class="form-control" placeholder="Enter the GitHub login name" />
+    
+    <div class="mt-2">
+        <button class="btn btn-primary" (click)="getFollowers(gitHubLogin.value)">Get GitHub followers</button>
+    </div>
+</div>
+
+<div class="m-3">
+    <h3><em>{{ userLogin }}</em> followers</h3>
+</div>
+<div *ngFor="let follower of followers | async" class="media">
+    <div class="media-left">
+        <a href="#">
+            <img class="avatar media-object" [src]="follower.avatar_url" alt="...">
+        </a>
+    </div>
+
+    <div class="media-body">
+        <h4 class="media-heading">{{ follower.login }}</h4>
+        <a [href]="follower.html_url">{{ follower.html_url }}</a>
+    </div>
+</div>

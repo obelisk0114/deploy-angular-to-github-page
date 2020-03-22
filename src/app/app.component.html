@@ -1,20 +1,19 @@
 <div class="container">
   <h1>Assignment 10: Project Deployment</h1>
-  <div class="description">Deploy the deploy-demo_depoly project to Github, Heroku and Firebase.</div>  
+  <div class="mb-4">Deploy the deploy-demo_depoly project to Github, Heroku and Firebase.</div>  
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="">Angular test</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand">Angular test</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" [routerLink]="['/aspect']">Aspects</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home">Home</a>
+        <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/aspect']">Aspects</a>
+        <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/github', 'followers']">GitHub followers</a>
       </div>
     </div>
   </nav>
 
-  <app-aspects></app-aspects>
-  <router-outlet></router-outlet>
+  <div class="m-3">
+    <router-outlet></router-outlet>
+  </div>
 </div>
