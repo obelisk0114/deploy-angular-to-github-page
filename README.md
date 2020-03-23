@@ -4,6 +4,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deploy to GitHub Pages
 
+### Prerequisite
+
+```
+$ git remote add origin <GitHub project address>
+$ npm install -g angular-cli-ghpages
+```
+
+### Start to deploy
+
 ```Bash
 $ ng build --prod --base-href /deploy-angular-to-github-page/
 $ ngh --dir=dist/HW10-Project-Deployment --no-silent
@@ -13,18 +22,50 @@ or
 
     # Generate files to docs folder
     $ ng build --prod --output-path docs --base-href /deploy-angular-to-github-page/
-    
+
     $ npx angular-cli-ghpages --dir=docs --no-silent
 
 [The website address](https://obelisk0114.github.io/deploy-angular-to-github-page/)
 
-## Reference website
+### Reference website (deploy to GitHub Pages)
 
 [GitHub Pages](https://pages.github.com/)
 
 [Deploy to GitHub pages in Angular website](https://angular.io/guide/deployment#deploy-to-github-pages)
 
 [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages/blob/master/docs/README_standalone.md)
+
+## Deploy to Firebase
+
+### Prerequisite
+
+1. Sign up for a Firebase Account (Google account)
+2. Create a New Firebase Project
+3. `$ npm install -g firebase-tools`
+
+### Start to deploy
+
+```Bash
+$ firebase login
+
+$ firebase init
+Hosting
+What do you want to use as your public directory? dist (the deployment folder. The same as "outputPath" in "angular.json")
+Configure as a single-page app (rewrite all urls to /index.html)? Yes
+
+$ ng build --prod
+$ firebase deploy
+```
+
+Use `firebase open hosting:site` to open the website
+
+### Reference website (deploy to Firebase)
+
+[Deploy to Firebase in Angular website](https://angular.io/start/start-deployment#hosting-an-angular-app-on-firebase)
+
+[firebase-tools](https://github.com/firebase/firebase-tools)
+
+[Deploying an Angular CLI App to Production with Firebase](https://scotch.io/tutorials/deploying-an-angular-cli-app-to-production-with-firebase)
 
 ## Development server
 
