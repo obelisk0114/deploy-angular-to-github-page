@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   },
   {
+    path: 'student',
+    loadChildren: () => 
+      import('./student-firebase/student-firebase.module').then(m => m.StudentFirebaseModule)
+  },
+  {
     path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {

@@ -1,0 +1,25 @@
+<button (click)="ngOnDestroy()">Go Offline</button>
+
+<ul>
+    <li *ngFor="let course of courses">
+        Course: {{ course.name }}, Teacher: {{ course.teacher }}, Time: {{ course.time }}
+
+        <button (click)="updateBySet(course)">Update by set method (destructive)</button>
+        <button (click)="updateByUpdate(course)">Update by update method (non-destructive)</button>
+        <button (click)="delete(course)">Delete</button>
+    </li>
+</ul>
+
+<div>
+    {{ courseObj | json }}
+</div>
+
+<div class="m-3">
+    <input type="text" (keyup.enter)="add(inputCourse)" #inputCourse>
+</div>
+
+<ul>
+    <li *ngFor="let device of devices$ | async">
+        {{ device | json }}
+    </li>
+</ul>
