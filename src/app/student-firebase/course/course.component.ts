@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Subscription, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-course',
@@ -16,6 +15,7 @@ export class CourseComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   allCourses: any;
+  courseMap: Map<string, string> = new Map();
 
   constructor(private db: AngularFireDatabase) { 
     this.courseRef = db.list('Course');
@@ -31,8 +31,19 @@ export class CourseComponent implements OnInit, OnDestroy {
 
     this.db.object('Course').valueChanges().subscribe(allCourses => {
       this.allCourses = allCourses;
-      
-      console.log(this.allCourses);
+      //console.log(this.allCourses);
+    });
+
+    this.courseRef.snapshotChanges().subscribe(actions => {
+      this.courseMap.clear();
+
+      actions.forEach(action => {
+        //console.log(action.type);
+        let key = action.key;
+        let value = action.payload.val();
+
+        this.courseMap.set(JSON.stringify(value), key);
+      });
     });
     
     this.devices$ = db.list('Device').valueChanges();
@@ -48,24 +59,26 @@ export class CourseComponent implements OnInit, OnDestroy {
       teacher: 'Dr. add',
       time: 'TT'
     });
+
+    course.value = '';
   }
 
   updateBySet(course: any): void {
-    let val = course.$id;
-    console.log(course);
-    console.log(course.key);
+    //console.log(course);
+    let val = this.courseMap.get(JSON.stringify(course));
     console.log(val);
+    console.log('db.list(\'Course\').snapshotChanges().subscribe');
 
     // This is called a destructive update, 
     // because it deletes everything currently in place and saves the new value.
-    //this.db.object('Course/' + 'test').set({ name: course.name + ' _ UPDATE by set'});
+    this.db.object('Course/' + val).set({ name: course.name + ' _ UPDATE by set'});
   }
 
   updateByUpdate(course: any): void {
-    console.log(this.allCourses);
-    console.log(course);
+    //console.log(course);
     let val = Object.keys(this.allCourses).find(key => JSON.stringify(this.allCourses[key]) === JSON.stringify(course));
     console.log(val);
+    console.log('this.db.object(\'Course\').valueChanges().subscribe');
     
     // This is called a non-destructive update, 
     // because it only updates the values specified.
@@ -73,7 +86,8 @@ export class CourseComponent implements OnInit, OnDestroy {
   }
 
   delete(course: any): void {
-    let val = Object.keys(this.allCourses).find(key => JSON.stringify(this.allCourses[key]) === JSON.stringify(course));
+    //let val = Object.keys(this.allCourses).find(key => JSON.stringify(this.allCourses[key]) === JSON.stringify(course));
+    let val = this.courseMap.get(JSON.stringify(course));
     this.db.object('Course/' + val)
            .remove()
            .then(_ => console.log('Deleted!'))
