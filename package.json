@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "bootstrap": "^4.4.1",
-    "firebase": "^7.13.1",
+    "firebase": "^7.24.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/compat-data": "7.8.0",
     "@angular-devkit/build-angular": "~0.803.9",
-    "@angular/cli": "~8.3.9",
+    "@angular/cli": "~21.1.0",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
     "@types/node": "~8.9.4",
